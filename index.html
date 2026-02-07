@@ -16,6 +16,7 @@
             --link-color: #1a73e8;
             --bg-color: #ffffff;
             --text-color: #4a4a4a;
+            --accent-color: #e8f0fe;
         }
 
         body {
@@ -103,25 +104,74 @@
         .btn-pdf { background-color: #b31b1b; } /* PDF Red */
         .btn-pdf:hover { background-color: #8f1313; }
 
-        /* Abstract Section */
+        /* Sections */
         .section-title {
             font-family: 'Google Sans', sans-serif;
             font-size: 1.8rem;
             color: var(--primary-color);
-            margin-top: 40px;
-            margin-bottom: 20px;
-            text-align: center; /* Centered title */
+            margin-top: 50px;
+            margin-bottom: 25px;
+            text-align: center;
         }
 
-        .abstract-content {
+        .content-block {
             text-align: justify;
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+        
+        .abstract-box {
             background-color: #f8f9fa;
             padding: 30px;
             border-radius: 10px;
-            font-size: 1.05rem;
         }
 
-        /* Teaser Image Placeholder */
+        .highlight-box {
+            background-color: var(--accent-color);
+            border-left: 5px solid var(--link-color);
+            padding: 20px;
+            margin: 30px 0;
+            text-align: left;
+            border-radius: 0 10px 10px 0;
+        }
+        
+        .highlight-box h3 {
+            margin-top: 0;
+            color: #174ea6;
+            font-family: 'Google Sans', sans-serif;
+        }
+
+        /* Image Grids */
+        .image-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .image-item {
+            background: white;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .image-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            display: block;
+        }
+
+        .image-label {
+            margin-top: 10px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #333;
+            text-align: center;
+        }
+
+        /* Teaser Image */
         .teaser {
             width: 100%;
             margin: 30px 0;
@@ -140,6 +190,8 @@
             font-size: 0.9rem;
             color: #666;
             margin-top: 10px;
+            padding: 0 10px;
+            text-align: center;
         }
 
         /* Footer */
@@ -152,10 +204,11 @@
         }
 
         /* Mobile adjustments */
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
             h1 { font-size: 1.8rem; }
             .conference { font-size: 1.2rem; }
-            .abstract-content { padding: 20px; text-align: left; }
+            .content-block, .abstract-box { padding: 20px; text-align: left; }
+            .image-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -168,7 +221,7 @@
         <!-- Conference -->
         <div class="conference">ICLR 2026</div>
 
-        <!-- Authors (Placeholder - Edit these) -->
+        <!-- Authors -->
         <div class="authors">
             <a href="#">Shilpa Mukhopadhyay</a>,
             <a href="#">Amit Roy-Chowdhury</a>,
@@ -179,36 +232,24 @@
 
         <!-- Action Buttons -->
         <div class="links">
-            <!-- ArXiv Link -->
-            <a href="#" class="btn btn-pdf">
-                <i class="fas fa-file-pdf"></i> Paper (ArXiv)
-            </a>
-            
-            <!-- GitHub Link -->
-            <a href="https://github.com/shilpa2301/CooperTrim" class="btn">
-                <i class="fab fa-github"></i> Code
-            </a>
-
-            <!-- Hugging Face Link -->
-            <a href="https://huggingface.co/shilpa2301/CooperTrim" class="btn btn-hf">
-                <i class="fas fa-cube"></i> Pretrained Models
-            </a>
+            <a href="#" class="btn btn-pdf"><i class="fas fa-file-pdf"></i> Paper (ArXiv)</a>
+            <a href="https://github.com/shilpa2301/CooperTrim" class="btn"><i class="fab fa-github"></i> Code</a>
+            <a href="https://huggingface.co/shilpa2301/CooperTrim" class="btn btn-hf"><i class="fas fa-cube"></i> Pretrained Models</a>
         </div>
 
         <!-- Teaser Image -->
         <div class="teaser">
             <img src="website.png" alt="CooperTrim Framework Overview">
-            <div class="caption">Increased data requests align with higher scene complexity. For dynamic objects, complexity in number and
-positioning rises in Frames 1200, 200, and 1700. For static elements, complexity grows in Frames 900, 250, and 1600,
-with more intersections and lane orientations. Visualizations on the right highlight the frames at vertical lines; Frame
-1200, 200, 1700 (dynamic) and 900, 250, 1600 (static). Green dashed lines show baseline CoBEVT IoU. Green solid
-lines show COOPERTRIM IoU.</div>
+            <div class="caption">
+                Figure 1: <strong>CooperTrim Adaptation.</strong> Increased data requests align with higher scene complexity. 
+                Dynamic objects trigger higher request volumes (Frames 200, 1200, 1700), as do complex static elements like intersections (Frames 250, 900, 1600).
+                Green lines indicate CooperTrim maintains high IoU despite reduced bandwidth.
+            </div>
         </div> 
-
 
         <!-- Abstract -->
         <h2 class="section-title">Abstract</h2>
-        <div class="abstract-content">
+        <div class="content-block abstract-box">
             <p>
                 Cooperative perception enables autonomous agents to share encoded representations over wireless communication to enhance each other’s live situational awareness. However, the tension between the limited communication bandwidth and the rich sensor information hinders its practical deployment. Recent studies have explored selection strategies that share only a subset of features per frame while striving to keep the performance on par. Nevertheless, the bandwidth requirement still stresses current wireless technologies.
             </p>
@@ -216,11 +257,69 @@ lines show COOPERTRIM IoU.</div>
                 To fundamentally ease the tension, we take a proactive approach, exploiting the temporal continuity to identify features that capture environment dynamics, while avoiding repetitive and redundant transmission of static information. By incorporating temporal awareness, agents are empowered to dynamically adapt the sharing quantity according to environment complexity. We instantiate this intuition into an adaptive selection framework, <strong>COOPERTRIM</strong>, which introduces a novel conformal temporal uncertainty metric to gauge feature relevance, and a data-driven mechanism to dynamically determine the sharing quantity.
             </p>
             <p>
-                To evaluate COOPERTRIM, we take semantic segmentation and 3D detection as example tasks. Across multiple open-source cooperative segmentation and detection models, COOPERTRIM achieves up to <strong>80.28%</strong> and <strong>72.52%</strong> bandwidth reduction respectively while maintaining a comparable accuracy. Relative to other selection strategies, COOPERTRIM also improves IoU by as much as <strong>45.54%</strong> with up to <strong>72%</strong> less bandwidth. Combined with compression strategies, COOPERTRIM can further reduce bandwidth usage to as low as <strong>1.46%</strong> without compromising IoU performance. Qualitative results show COOPERTRIM gracefully adapts to environmental dynamics, localization error, and communication latency, demonstrating flexibility and paving the way for real-world deployment.
+                To evaluate COOPERTRIM, we take semantic segmentation and 3D detection as example tasks. Across multiple open-source cooperative segmentation and detection models, COOPERTRIM achieves up to <strong>80.28%</strong> and <strong>72.52%</strong> bandwidth reduction respectively while maintaining a comparable accuracy.
             </p>
         </div>
 
-        <!-- BibTeX -->
+        <!-- Overview Section -->
+        <h2 class="section-title">Methodology Overview</h2>
+        <div class="content-block">
+            <p>
+                The core challenge in cooperative perception is the mismatch between the richness of sensor data and limited wireless bandwidth. <strong>CooperTrim</strong> addresses this by shifting from static, frame-by-frame sharing to a <strong>proactive, temporal-aware adaptation</strong> strategy.
+            </p>
+            
+            <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 30px;">
+                <div style="flex: 1; min-width: 300px;">
+                    <h3>1. Relevance: Conformal Temporal Uncertainty</h3>
+                    <p>
+                        Instead of treating every frame independently, CooperTrim contextualizes current features within the ego agent's recent memory. It uses a <strong>conformal prediction-inspired quantile gating mechanism</strong> to identify features that deviate significantly from past data. This allows the system to prioritize "uncertain" or "dynamic" features (like moving vehicles or changing lights) over static, redundant background information.
+                    </p>
+                </div>
+                <div style="flex: 1; min-width: 300px;">
+                    <h3>2. Quantity: Data-Driven Adaptation</h3>
+                    <p>
+                        How much data is "enough"? CooperTrim dynamically answers this by learning two key thresholds:
+                        <ul>
+                            <li><strong>Uncertainty Threshold:</strong> Determines which features are considered "relevant."</li>
+                            <li><strong>Attention Mask Threshold:</strong> Decides the cut-off point for sharing.</li>
+                        </ul>
+                        This allows the system to automatically scale up data sharing in complex scenarios (e.g., intersections) and scale down in simple ones (e.g., straight highways).
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Intuition / Appendix A.5 Section -->
+        <div class="highlight-box">
+            <h3>💡 Intuition: Visualizing Temporal Uncertainty (Appendix A.5)</h3>
+            <p>
+                To better understand how CooperTrim selects features, we visualize two distinct cases from our experiments. These scenarios demonstrate the correlation between <strong>temporal uncertainty</strong> (what we measure) and <strong>information value</strong> (what we need).
+            </p>
+            
+            <div class="image-grid">
+                <!-- Case 1 -->
+                <div class="image-item">
+                    <!-- Replace 'appendix_case1.png' with your actual filename -->
+                    <img src="appendix_case1.png" alt="Case 1: High Uncertainty Scenario">
+                    <div class="image-label">Case 1: High Uncertainty / Dynamic Scene</div>
+                    <p style="font-size: 0.9rem; color: #555; margin-top: 5px;">
+                        In dynamic scenarios with moving objects or complex intersections, the temporal uncertainty is high. CooperTrim identifies these regions as critical and allocates more bandwidth to share detailed features, ensuring safety and accuracy.
+                    </p>
+                </div>
+
+                <!-- Case 2 -->
+                <div class="image-item">
+                    <!-- Replace 'appendix_case2.png' with your actual filename -->
+                    <img src="appendix_case2.png" alt="Case 2: Low Uncertainty Scenario">
+                    <div class="image-label">Case 2: Low Uncertainty / Static Scene</div>
+                    <p style="font-size: 0.9rem; color: #555; margin-top: 5px;">
+                        In static or simple environments (e.g., straight roads with no traffic), the temporal uncertainty is low because the scene hasn't changed significantly from previous frames. CooperTrim suppresses redundant data sharing here, saving bandwidth.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Citation -->
         <h2 class="section-title">Citation</h2>
         <div style="background: #eee; padding: 20px; border-radius: 5px; text-align: left; font-family: monospace; overflow-x: auto;">
 <pre>@inproceedings{coopertrim2026,
