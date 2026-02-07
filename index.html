@@ -299,21 +299,19 @@
             <div class="image-grid">
                 <!-- Case 1 -->
                 <div class="image-item">
-                    <!-- Replace 'appendix_case1.png' with your actual filename -->
-                    <img src="appendix_case1.png" alt="Case 1: High Uncertainty Scenario">
+                    <img src="app1.png" alt="Case 1: High Uncertainty Scenario">
                     <div class="image-label">Case 1: High Uncertainty / Dynamic Scene</div>
                     <p style="font-size: 0.9rem; color: #555; margin-top: 5px;">
-                        In dynamic scenarios with moving objects or complex intersections, the temporal uncertainty is high. CooperTrim identifies these regions as critical and allocates more bandwidth to share detailed features, ensuring safety and accuracy.
+                        In dynamic scenarios with fast moving objects (incoming blue car) or complex intersections, the temporal uncertainty is high. CooperTrim identifies these regions as critical and allocates more bandwidth to share detailed features, ensuring safety and accuracy.
                     </p>
                 </div>
 
                 <!-- Case 2 -->
                 <div class="image-item">
-                    <!-- Replace 'appendix_case2.png' with your actual filename -->
-                    <img src="appendix_case2.png" alt="Case 2: Low Uncertainty Scenario">
+                    <img src="app2.png" alt="Case 2: Low Uncertainty Scenario">
                     <div class="image-label">Case 2: Low Uncertainty / Static Scene</div>
                     <p style="font-size: 0.9rem; color: #555; margin-top: 5px;">
-                        In static or simple environments (e.g., straight roads with no traffic), the temporal uncertainty is low because the scene hasn't changed significantly from previous frames. CooperTrim suppresses redundant data sharing here, saving bandwidth.
+                        In static (as we see hardly any change in consecutive frames) or simple environments (e.g., straight roads with no traffic), the temporal uncertainty is low because the scene hasn't changed significantly from previous frames. CooperTrim suppresses redundant data sharing here, saving bandwidth.
                     </p>
                 </div>
             </div>
