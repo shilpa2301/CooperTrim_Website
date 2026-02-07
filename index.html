@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CooperTrim: Adaptive Data Selection (ICLR 2026)</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #202124;
+            --link-color: #1a73e8;
+            --bg-color: #ffffff;
+            --text-color: #4a4a4a;
+        }
+
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        /* Header Section */
+        h1 {
+            font-family: 'Google Sans', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .conference {
+            font-family: 'Google Sans', sans-serif;
+            font-size: 1.5rem;
+            color: #d93025; /* ICLR Red-ish color */
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .authors {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .authors a {
+            color: var(--primary-color);
+            text-decoration: none;
+            margin: 0 8px;
+        }
+
+        .authors a:hover {
+            text-decoration: underline;
+        }
+
+        /* Buttons */
+        .links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #363636;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #000;
+            transform: translateY(-2px);
+        }
+
+        .btn i {
+            margin-right: 8px;
+        }
+
+        .btn-hf { background-color: #FFD21E; color: #000; } /* HuggingFace Yellow */
+        .btn-hf:hover { background-color: #eebb00; }
+        
+        .btn-pdf { background-color: #b31b1b; } /* PDF Red */
+        .btn-pdf:hover { background-color: #8f1313; }
+
+        /* Abstract Section */
+        .section-title {
+            font-family: 'Google Sans', sans-serif;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-top: 40px;
+            margin-bottom: 20px;
+            text-align: center; /* Centered title */
+        }
+
+        .abstract-content {
+            text-align: justify;
+            background-color: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            font-size: 1.05rem;
+        }
+
+        /* Teaser Image Placeholder */
+        .teaser {
+            width: 100%;
+            margin: 30px 0;
+            border-radius: 10px;
+            border: 1px solid #eee;
+            overflow: hidden;
+        }
+        
+        .teaser img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .caption {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .conference { font-size: 1.2rem; }
+            .abstract-content { padding: 20px; text-align: left; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Title -->
+        <h1>CooperTrim: Adaptive Data Selection for Uncertainty-Aware Cooperative Perception</h1>
+        
+        <!-- Conference -->
+        <div class="conference">ICLR 2026</div>
+
+        <!-- Authors (Placeholder - Edit these) -->
+        <div class="authors">
+            <a href="#">Shilpa Mukhopadhyay</a>,
+            <a href="#">Amit Roy-Chowdhury</a>,
+            <a href="#">Hang Qiu</a>,
+            <br>
+            <span style="font-size: 0.9em; color: #666;">University of California, Riverside</span>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="links">
+            <!-- ArXiv Link -->
+            <a href="#" class="btn btn-pdf">
+                <i class="fas fa-file-pdf"></i> Paper (ArXiv)
+            </a>
+            
+            <!-- GitHub Link -->
+            <a href="https://github.com/shilpa2301/CooperTrim" class="btn">
+                <i class="fab fa-github"></i> Code
+            </a>
+
+            <!-- Hugging Face Link -->
+            <a href="https://huggingface.co/shilpa2301/CooperTrim" class="btn btn-hf">
+                <i class="fas fa-cube"></i> Pretrained Models
+            </a>
+        </div>
+
+        <!-- Teaser Image (Optional - Upload an image named 'teaser.png' to your repo to display it) -->
+        <!-- 
+        <div class="teaser">
+            <img src="teaser.png" alt="CooperTrim Framework Overview">
+            <div class="caption">Figure 1: Overview of the CooperTrim framework.</div>
+        </div> 
+        -->
+
+        <!-- Abstract -->
+        <h2 class="section-title">Abstract</h2>
+        <div class="abstract-content">
+            <p>
+                Cooperative perception enables autonomous agents to share encoded representations over wireless communication to enhance each other’s live situational awareness. However, the tension between the limited communication bandwidth and the rich sensor information hinders its practical deployment. Recent studies have explored selection strategies that share only a subset of features per frame while striving to keep the performance on par. Nevertheless, the bandwidth requirement still stresses current wireless technologies.
+            </p>
+            <p>
+                To fundamentally ease the tension, we take a proactive approach, exploiting the temporal continuity to identify features that capture environment dynamics, while avoiding repetitive and redundant transmission of static information. By incorporating temporal awareness, agents are empowered to dynamically adapt the sharing quantity according to environment complexity. We instantiate this intuition into an adaptive selection framework, <strong>COOPERTRIM</strong>, which introduces a novel conformal temporal uncertainty metric to gauge feature relevance, and a data-driven mechanism to dynamically determine the sharing quantity.
+            </p>
+            <p>
+                To evaluate COOPERTRIM, we take semantic segmentation and 3D detection as example tasks. Across multiple open-source cooperative segmentation and detection models, COOPERTRIM achieves up to <strong>80.28%</strong> and <strong>72.52%</strong> bandwidth reduction respectively while maintaining a comparable accuracy. Relative to other selection strategies, COOPERTRIM also improves IoU by as much as <strong>45.54%</strong> with up to <strong>72%</strong> less bandwidth. Combined with compression strategies, COOPERTRIM can further reduce bandwidth usage to as low as <strong>1.46%</strong> without compromising IoU performance. Qualitative results show COOPERTRIM gracefully adapts to environmental dynamics, localization error, and communication latency, demonstrating flexibility and paving the way for real-world deployment.
+            </p>
+        </div>
+
+        <!-- BibTeX -->
+        <h2 class="section-title">Citation</h2>
+        <div style="background: #eee; padding: 20px; border-radius: 5px; text-align: left; font-family: monospace; overflow-x: auto;">
+<pre>@inproceedings{coopertrim2026,
+  title={COOPERTRIM: Adaptive Data Selection for Uncertainty-Aware Cooperative Perception},
+  author={Shilpa Mukhopadhyay, Amit Roy-Chowdhury, Hang Qiu},
+  booktitle={International Conference on Learning Representations (ICLR)},
+  year={2026}
+}</pre>
+        </div>
+
+        <footer>
+            <p>Project page template based on standard academic websites.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
